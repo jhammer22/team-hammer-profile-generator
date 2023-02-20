@@ -1,5 +1,6 @@
 // Import all the things
 const inquirer = require('inquirer');
+const { default: Choices } = require('inquirer/lib/objects/choices');
 const Employee = require('./library/Employee');
 const Engineer = require('./library/Engineer');
 const Intern = require('./library/Intern');
@@ -13,10 +14,14 @@ function runProgram(){
   -----------------------------------------------------------------
   `);
   function createTeam(){
-    inquirer.prompt([{
-      type: "list"
-      choices: [ "Engineer", "Intern", "Manager", "Team Hammer complete!"]
-    }]) .then(function (input) {
+    inquirer.prompt([
+      {
+      type: "list",
+      choices: [ "Engineer", "Intern", "Manager", "Team Hammer complete!"],
+      name: "addEmployee",
+      Message: "Choose from the following list what kind of employee you would like to add to the team."
+      }
+    ]) .then(function (input) {
       switch (input.addEmployee) {
         case "Engineer":
           createEngineer();
@@ -33,7 +38,7 @@ function runProgram(){
           Team Hammer Complete
           ------------------------------------------------------------------
           `)
-          fs.writeFileSync(./)//finish this once path is set up      
+          // fs.writeFileSync(./)//finish this once path is set up      
       }
     })
   }
