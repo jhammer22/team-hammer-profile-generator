@@ -88,8 +88,8 @@ function createEngineer() {
       name: 'engineerTwitter',
       message: 'Enter your twitter handle',
       validate: (answer) => {
-        const jim = answer.match(/\S+@\S+\.\S+/);
-        if (jim) {
+        const dwight = answer.match(/\S+@\S+\.\S+/);
+        if (dwight) {
           return true;
         }
         return 'Please enter words with letters you should know better.';
