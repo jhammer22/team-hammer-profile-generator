@@ -73,16 +73,28 @@ function createEngineer() {
     },
     {
       type: 'input',
-      name: "engineerTwitter",
-      message: "What is your twitter? ",
+      name: 'engineerEmail',
+      message: 'What is your email?',
       validate: (answer) => {
           const jim = answer.match(/\S+@\S+\.\S+/);
           if (jim) {
             return true;
           }
-          return 'Please enter a word with letters you should know better.';
+          return 'Please enter words with letters you should know better.';
         },
     },
+    {
+      type: 'input',
+      name: 'engineerTwitter',
+      message: 'Enter your twitter handle',
+      validate: (answer) => {
+        const jim = answer.match(/\S+@\S+\.\S+/);
+        if (jim) {
+          return true;
+        }
+        return 'Please enter words with letters you should know better.';
+      },
+    }
   ])
 }; //.then for answers this will also fulfill position arg
 
