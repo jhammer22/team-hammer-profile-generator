@@ -22,32 +22,73 @@ function runProgram(){
       Message: "Choose from the following list what kind of employee you would like to add to the team."
       }
     ]) .then(function (input) {
-      switch (input.addEmployee) {
-        case "Engineer":
-          createEngineer();
-          break;
-        case "Intern":
-          createIntern();
-          break;
-        case "Manager":
-          createManager();
-          break;
-        default:
-          console.log(`
+        switch (input.addEmployee) {
+          case "Engineer":
+            createEngineer();
+            break;
+          case "Intern":
+            createIntern();
+           break;
+          case "Manager":
+            createManager();
+            break;
+          default:
+            console.log(`
           ------------------------------------------------------------------
-          Team Hammer Complete
+            Team Hammer Complete
           ------------------------------------------------------------------
-          `)
-          // fs.writeFileSync(./)//finish this once path is set up      
+          `)     
       }
     })
-  }
+  };
   createTeam();
-}
-// create Engineer
+};
+// create Engineer \
+// validate responses
+// do this for all employee types
+function createEngineer() {
+  inquirer.prompt([
+    {
+      type: 'input',
+      message: 'What is your the name of this employee',
+      name: 'engineerName',
+      validate: (answer) => {
+        if (answer !== '') {
+          return true;
+        }
+        return 'Is your employee namless? Please enter a name to continue.'
+      },
+    },
+    {
+      type: 'input',
+      message: 'Enter employee number ID',
+      name: 'engineerId',
+      validate: (answer) => {
+        const pam = answer.match(/^[1-9]\d*$/);
+        if(pam) {
+          return true;
+        }
+        return 'Please enter a number greater than zero!'
+      }
+    },
+    {
+      type: 'input',
+      name: "engineerTwitter",
+      message: "What is your twitter? ",
+      validate: (answer) => {
+          const jim = answer.match(/\S+@\S+\.\S+/);
+          if (jim) {
+            return true;
+          }
+          return 'Please enter a word with letters you should know better.';
+        },
+    },
+  ])
+}; //.then for answers this will also fulfill position arg
 
 // create Intern
 
 // create Manager
 
-// fs writeToFile
+  // fs.writeFile(./)//finish this once path is set up 
+
