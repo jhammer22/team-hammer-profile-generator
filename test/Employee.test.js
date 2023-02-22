@@ -17,7 +17,7 @@ test('employee id as a number', () => {
 
 test('employee has a name as a string', () => {
   const employee = new Employee( 2, 'Dwight', 'Assistant to the manager', 'beet@shrutefarm.com');
-  expect().toBe()
+  expect().toBe() //search for a method to compare a string
 });
 
 test('employee has a position as a string', () => {

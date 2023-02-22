@@ -1,7 +1,7 @@
 // sub class constructor of employee
 // import employee
 const Employee = require('./Employee')
-// give sub class unique constructor of school
+// give sub class object of school
 
 class Intern extends Employee {
   constructor(id, name, position, email, school){
