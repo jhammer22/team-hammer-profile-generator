@@ -1,10 +1,10 @@
 // Import all the things
 const inquirer = require('inquirer');
 const { default: Choices } = require('inquirer/lib/objects/choices');
-const Employee = require('./library/Employee');
-const Engineer = require('./library/Engineer');
-const Intern = require('./library/Intern');
-const Manager = require('./library/Manager');
+const Employee = require('../library/Employee');
+const Engineer = require('../library/Engineer');
+const Intern = require('../library/Intern');
+const Manager = require('../library/Manager');
 
 // ask questions to create team to decide what employee questions are going to be asked
 function runProgram(){
@@ -19,7 +19,7 @@ function runProgram(){
       type: "list",
       choices: [ "Engineer", "Intern", "Manager", "Team Hammer complete!"],
       name: "addEmployee",
-      Message: "Choose from the following list what kind of employee you would like to add to the team."
+      message: "Choose from the following list what kind of employee you would like to add to the team."
       }
     ]) .then(function (input) {
         switch (input.addEmployee) {
@@ -96,7 +96,8 @@ function createEngineer() {
       },
     }
   ])
-}; //.then for answers this will also fulfill position arg
+}; 
+//.then for answers this will also fulfill position arg
 
 // create Intern
 function createIntern() {
