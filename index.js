@@ -1,10 +1,9 @@
 // Import all the things
 const inquirer = require('inquirer');
-const { default: Choices } = require('inquirer/lib/objects/choices');
-const Employee = require('../library/Employee');
-const Engineer = require('../library/Engineer');
-const Intern = require('../library/Intern');
-const Manager = require('../library/Manager');
+const Employee = require('./library/Employee');
+const Engineer = require('./library/Engineer');
+const Intern = require('./library/Intern');
+const Manager = require('./library/Manager');
 
 // ask questions to create team to decide what employee questions are going to be asked
 function runProgram(){
@@ -13,6 +12,7 @@ function runProgram(){
   Answer the following question to build team Hammer
   -----------------------------------------------------------------
   `);
+  createTeam();
   function createTeam(){
     inquirer.prompt([
       {
@@ -41,7 +41,7 @@ function runProgram(){
       }
     })
   };
-  createTeam();
+  
 };
 // create Engineer \
 // validate responses
@@ -97,7 +97,7 @@ function createEngineer() {
     }
   ])
 }; 
-//.then for answers this will also fulfill position arg
+//.then to take user back to createTeam
 
 // create Intern
 function createIntern() {
@@ -138,19 +138,13 @@ function createIntern() {
         },
     },
     {
-      type: 'input',
+      type: 'list',
       name: 'internSchool',
       message: 'What school did you attend?',
-      validate: (answer) => {
-        const dwight = answer.match(/\S+@\S+\.\S+/);
-        if (dwight) {
-          return true;
-        }
-        return 'They did teach you words in school right?';
-      },
+      choices: ['UT Austin', 'Baylor', 'Texas Tech', 'Texas State', 'None of the above']
     }
   ])
-}; //.then for answers this will also fulfill position arg
+}; //.then to take user back to 
 // create Manager
 function createManager() {
   inquirer.prompt([
@@ -205,3 +199,4 @@ function createManager() {
 }; //.then for answers this will also fulfill position arg
   // fs.writeFile(./)//finish this once path is set up 
 
+  runProgram();
