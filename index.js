@@ -64,23 +64,21 @@ function createEngineer() {
       message: 'Enter employee number ID',
       name: 'engineerId',
       validate: (answer) => {
-        const pam = answer.match(/^[1-9]\d*$/);
-        if(pam) {
-          return true;
-        }
-        return 'Please enter a number greater than zero!'
+       if (answer!== '') {
+        return true;
       }
+      return 'Please enter a number to continue.'
+    },
     },
     {
       type: 'input',
       name: 'engineerEmail',
       message: 'What is your email?',
       validate: (answer) => {
-          const jim = answer.match(/\S+@\S+\.\S+/);
-          if (jim) {
-            return true;
-          }
-          return 'Please enter words with letters you should know better.';
+         if (answer!== '') {
+          return true;
+         }
+         return 'Please enter a valid email address to continue.'
         },
     },
     {
@@ -88,16 +86,17 @@ function createEngineer() {
       name: 'engineerTwitter',
       message: 'Enter your twitter handle',
       validate: (answer) => {
-        const dwight = answer.match(/\S+@\S+\.\S+/);
-        if (dwight) {
+        if (answer!== '') {
           return true;
         }
-        return 'Please enter words with letters you should know better.';
+        return 'Please enter a valid twitter handle to continue.'
       },
     }
-  ])
+  ]).then(answers => {
+    const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerTwitter);
+  })
 }; 
-//.then to take user back to createTeam
+
 
 // create Intern
 function createIntern() {
@@ -118,11 +117,10 @@ function createIntern() {
       message: 'Enter employee number ID',
       name: 'internId',
       validate: (answer) => {
-        const pam = answer.match(/^[1-9]\d*$/);
-        if(pam) {
-          return true;
-        }
-        return 'Please enter a number greater than zero!'
+       if (answer!== '') {
+        return true;
+       }
+       return 'Please enter a number to continue.'
       }
     },
     {
@@ -130,21 +128,24 @@ function createIntern() {
       name: 'internEmail',
       message: 'What is your email?',
       validate: (answer) => {
-          const jim = answer.match(/\S+@\S+\.\S+/);
-          if (jim) {
+          if (answer!== '') {
             return true;
           }
-          return 'Please enter words with letters you should know better.';
+          return 'Please enter a valid email address to continue.'
         },
     },
     {
-      type: 'list',
+      type: 'input',
       name: 'internSchool',
       message: 'What school did you attend?',
-      choices: ['UT Austin', 'Baylor', 'Texas Tech', 'Texas State', 'None of the above']
+      validate: (answer) => {
+        if (answer!== '') {
+          return true;
+        }
+        return 'Please enter a valid school to continue.'
     }
   ])
-}; //.then to take user back to 
+};
 // create Manager
 function createManager() {
   inquirer.prompt([
@@ -164,11 +165,10 @@ function createManager() {
       message: 'Enter employee number ID',
       name: 'managerId',
       validate: (answer) => {
-        const pam = answer.match(/^[1-9]\d*$/);
-        if(pam) {
+        if (answer!== '') {
           return true;
         }
-        return 'Please enter a number greater than zero!'
+        return 'Please enter a number to continue.'
       }
     },
     {
@@ -176,11 +176,10 @@ function createManager() {
       name: 'managerEmail',
       message: 'What is your email?',
       validate: (answer) => {
-          const jim = answer.match(/\S+@\S+\.\S+/);
-          if (jim) {
-            return true;
-          }
-          return 'Please enter words with letters you should know better.';
+         if (answer!== '') {
+          return true;
+         }
+         return 'Please enter a valid email address to continue.'
         },
     },
     {
@@ -188,15 +187,13 @@ function createManager() {
       name: 'managerLinkedIn',
       message: 'Link your LinkedIn',
       validate: (answer) => {
-        const dwight = answer.match(/\S+@\S+\.\S+/);
-        if (dwight) {
+        if (answer!== '') {
           return true;
         }
-        return 'We wont bite give us your LinkedIn';
+        return 'Please enter a valid LinkedIn to continue.'
       },
     }
   ])
-}; //.then for answers this will also fulfill position arg
-  // fs.writeFile(./)//finish this once path is set up 
+};
 
   runProgram();
