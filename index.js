@@ -52,10 +52,95 @@ const generalQuestions = [
 ];
 
 // const questions created now build prompt to ask user what kind of employee they want to add and questtions to create team member
+const newEmployeeQuestions = () => {
+  console.log(`
+  -----------------------------------------------------------------
+  Answer the following question to build team Hammer
+  -----------------------------------------------------------------
+  `);
+  inquirer.prompt([
+    {
+      type: 'list',
+      message: 'What kind of employee would you like to add?',
+      name: 'employeeType',
+      choices: ['Engineer', 'Intern', 'Manager'],
+    }
+  ])
+  .then((userInput) => {
+    switch (userInput.employeeType) {
+      case 'Engineer':
+        inquirer.prompt([
+          ...generalQuestions,
+          {
+            type: 'input',
+            name: 'github',
+            message: 'What is your GitHub username?',
+            validate: githubInput => {
+              if (githubInput) {
+                return true;
+            } else {
+              console.log('Please enter your GitHub username!');
+              return false;
+            }
+          }
+          }
+        ]) .then((data) => {
+          let employee = new Engineer(data.name, data.id, data.email, data.github);
+          team.push(employee);
+          newEmployee();
+        })
+        break;
+    
+      case 'Intern':
+        inquirer.prompt([
+          ...generalQuestions,
+          {
+            type: 'input',
+            name:'school',
+            message: 'What school did you attend?',
+            validate: schoolInput => {
+              if (schoolInput) {
+                return true;
+              } else {
+                console.log('Please enter your school!');
+                return false;
+              }
+            }
+          }
+        ]).then((data) => {
+          let employee = new Intern(data.name, data.id, data.email, data.school);
+          team.push(employee);
+          newEmployee();
+        })
+        break;
 
+      case 'Manager':
+        inquirer.prompt([
+          ...generalQuestions,
+          {
+            type: 'input',
+            name: 'LinkedIn',
+            message: 'What is your LinkedIn username?',
+            validate: LinkedInInput => {
+              if (LinkedInInput) {
+                return true;
+              }else {
+                console.log('Please enter your LinkedIn username!');
+                return false;
+              }
+            }
+          }
+        ]).then ((data) => {
+          let employee = new Manager(data.name, data.id, data.email, data.LinkedIn);
+          team.push(employee);
+          newEmployee();
+        })
+        break;
+  }
+})
+}
 
 // add more employee types function
-
 const addMoreEmployees = () => {
   inquirer.prompt ([
     {
@@ -64,7 +149,7 @@ const addMoreEmployees = () => {
     name: 'addEmployee',
     default: false,
     },
-  ]).then(answeredYes) => {
+  ]).then((answeredYes) => {
     if (answeredYes.addEmployee === true) {
       newEmployee();
     } else {
@@ -72,7 +157,7 @@ const addMoreEmployees = () => {
       console.log(team);
       writeToFile('./dist/index.html', generateHTML(team));
     }
-  }
+  })
 };
 
 function writeToFile(fileName, data) {
@@ -83,7 +168,17 @@ function writeToFile(fileName, data) {
       console.log('Success!');
     }
   });
-}
+};
+
+// initialize function
+function init() {
+  console.log(`
+  -----------------------------------------------------------------
+  Welcome to the Team Hammer!
+  -----------------------------------------------------------------
+  `);
+  newEmployeeQuestions();
+};
 
 
 
