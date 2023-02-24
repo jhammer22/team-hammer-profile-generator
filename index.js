@@ -8,8 +8,82 @@ const fs = require('fs');
 const generateHTML = require('./src/generateHTML');
 
 
+// all employee types share general questions create reusable arrays of general questions
+const generalQuestions = [
+  {
+    type: 'input',
+    name: 'name',
+    message: 'What is your name?',
+    validate: nameInput => {
+      if (nameInput) {
+        return true;
+      } else {
+        console.log('Please enter your name!');
+        return false;
+      }
+    }
+  },
+  {
+    type: 'input',
+    name: 'id',
+    message: 'What is your employee ID?',
+    validate: idInput => {
+      if (idInput) {
+        return true;
+      } else {
+        console.log('Please enter your employee ID!');
+        return false;
+      }
+    }
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'What is your email?',
+    validate: emailInput => {
+      if (emailInput) {
+        return true;
+      } else {
+        console.log('Please enter your email!');
+        return false;
+      }
+    }
+  }
+];
+
+// const questions created now build prompt to ask user what kind of employee they want to add and questtions to create team member
 
 
+// add more employee types function
+
+const addMoreEmployees = () => {
+  inquirer.prompt ([
+    {
+      type: 'confirm',
+    message: 'Would you like to add another employee?',
+    name: 'addEmployee',
+    default: false,
+    },
+  ]).then(answeredYes) => {
+    if (answeredYes.addEmployee === true) {
+      newEmployee();
+    } else {
+      console.log('Team created!');
+      console.log(team);
+      writeToFile('./dist/index.html', generateHTML(team));
+    }
+  }
+};
+
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Success!');
+    }
+  });
+}
 
 
 
