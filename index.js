@@ -24,8 +24,56 @@ function runProgram(){
     ]) .then(function (input) {
         switch (input.addEmployee) {
           case "Engineer":
-            createEngineer();
-            break;
+            function createEngineer() {
+              inquirer.prompt([
+                {
+                  type: 'input',
+                  message: 'What is your the name of this employee',
+                  name: 'engineerName',
+                  validate: (answer) => {
+                    if (answer !== '') {
+                      return true;
+                    }
+                    return 'Is your employee namless? Please enter a name to continue.'
+                  },
+                },
+                {
+                  type: 'input',
+                  message: 'Enter employee number ID',
+                  name: 'engineerId',
+                  validate: (answer) => {
+                   if (answer!== '') {
+                    return true;
+                  }
+                  return 'Please enter a number to continue.'
+                },
+                },
+                {
+                  type: 'input',
+                  name: 'engineerEmail',
+                  message: 'What is your email?',
+                  validate: (answer) => {
+                     if (answer!== '') {
+                      return true;
+                     }
+                     return 'Please enter a valid email address to continue.'
+                    },
+                },
+                {
+                  type: 'input',
+                  name: 'engineerTwitter',
+                  message: 'Enter your twitter handle',
+                  validate: (answer) => {
+                    if (answer!== '') {
+                      return true;
+                    }
+                    return 'Please enter a valid twitter handle to continue.'
+                  },
+                }
+              ]).then(answers => {
+                const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerTwitter);
+              })
+            }; 
           case "Intern":
             createIntern();
            break;
@@ -144,8 +192,11 @@ function createIntern() {
         }
         return 'Please enter a valid school to continue.'
     }
-  ])
-};
+    }
+  ]) .then (answers => {
+    const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+  })
+}
 // create Manager
 function createManager() {
   inquirer.prompt([
