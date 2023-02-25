@@ -4,8 +4,8 @@ const Employee = require('./library/Employee');
 const Engineer = require('./library/Engineer');
 const Intern = require('./library/Intern');
 const Manager = require('./library/Manager');
-// const fs = require('fs');
-// const generateHTML = require('./src/generateHTML');
+const fs = require('fs');
+const generateHTML = require('./src/page');
 
 
 // all employee types share general questions create reusable arrays of general questions
@@ -160,15 +160,15 @@ const addMoreEmployees = () => {
   })
 };
 
-// function writeToFile(fileName, data) {
-//   fs.writeFile(fileName, data, (err) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log('Success!');
-//     }
-//   });
-// };
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Success!');
+    }
+  });
+};
 
 // initialize function
  init = () => { newEmployee()};
