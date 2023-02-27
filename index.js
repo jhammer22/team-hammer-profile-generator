@@ -1,13 +1,14 @@
 // Import all the things
 const inquirer = require('inquirer');
-const Employee = require('./library/Employee');
-const Engineer = require('./library/Engineer');
-const Intern = require('./library/Intern');
-const Manager = require('./library/Manager');
+const {Employee} = require('./library/Employee');
+const {Engineer} = require('./library/Engineer');
+const {Intern} = require('./library/Intern');
+const {Manager} = require('./library/Manager');
 const fs = require('fs');
 const generateHTML = require('./src/page');
+const path = require('path');
 
-
+const entireTeam = [];
 // all employee types share general questions create reusable arrays of general questions
 const generalQuestions = [
   {
@@ -51,7 +52,7 @@ const generalQuestions = [
   }
 ];
 
-// const questions created now build prompt to ask user what kind of employee they want to add and questtions to create team member
+// questions created now build prompt to ask user what kind of employee they want to add and questtions to create team member
 const newEmployee = () => {
   console.log(`
   -----------------------------------------------------------------
