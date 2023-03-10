@@ -1,9 +1,9 @@
 // Import all the things
 const inquirer = require('inquirer');
-const {Employee} = require('./library/Employee');
-const {Engineer} = require('./library/Engineer');
-const {Intern} = require('./library/Intern');
-const {Manager} = require('./library/Manager');
+const Employee = require('./library/Employee');
+const Engineer = require('./library/Engineer');
+const Intern = require('./library/Intern');
+const Manager = require('./library/Manager');
 const fs = require('fs');
 const generateHTML = require('./src/page');
 const path = require('path');
@@ -87,10 +87,11 @@ const newEmployee = () => {
           }
         ]) .then((data) => {
           let employee = new Engineer(data.name, data.id, data.email, data.github);
-          team.push(employee);
+          entireTeam.push(employee);
           addMoreEmployees();
         })
         break;
+        console.log(team)
     
       case 'Intern':
         inquirer.prompt([
@@ -110,7 +111,7 @@ const newEmployee = () => {
           }
         ]).then((data) => {
           let employee = new Intern(data.name, data.id, data.email, data.school);
-          team.push(employee);
+          entireTeam.push(employee);
           addMoreEmployees();
         })
         break;
@@ -133,7 +134,7 @@ const newEmployee = () => {
           }
         ]).then ((data) => {
           let employee = new Manager(data.name, data.id, data.email, data.LinkedIn);
-          team.push(employee);
+          entireTeam.push(employee);
           addMoreEmployees();
         })
         break;
@@ -155,8 +156,8 @@ const addMoreEmployees = () => {
       newEmployee();
     } else {
       console.log('Team created!');
-      console.log(team);
-      writeToFile('./dist/index.html', generateHTML(team));
+      console.log(entireTeam);
+      writeToFile('./dist/index.html', generateHTML(entireTeam));
     }
   })
 };

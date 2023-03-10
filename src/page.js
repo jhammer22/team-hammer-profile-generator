@@ -1,9 +1,9 @@
 // import employee class and subclass
 
-// const {Employee} = require('./src/Employee');
-// const {Intern} = require('.../src/Intern');
-// const {Manager} = require('.../lib/Manager');
-// const {Engineer} = require('.../lib/Engineer');
+const Employee = require('../library/Employee');
+const Intern = require('../library/Intern');
+const Manager = require('../library/Manager');
+const Engineer = require('../library/Engineer');
 // function to render employee case by case
 
 
@@ -87,4 +87,4 @@ function generateHTML(employees) {
   </body>`
 }
 
-// module.exports = generateHTML;
+module.exports = generateHTML;
