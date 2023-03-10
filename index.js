@@ -87,7 +87,7 @@ const newEmployee = () => {
           }
         ]) .then((data) => {
           let employee = new Engineer(data.name, data.id, data.email, data.github);
-          // team.push(employee);
+          team.push(employee);
           addMoreEmployees();
         })
         break;
@@ -110,7 +110,7 @@ const newEmployee = () => {
           }
         ]).then((data) => {
           let employee = new Intern(data.name, data.id, data.email, data.school);
-          // team.push(employee);
+          team.push(employee);
           addMoreEmployees();
         })
         break;
@@ -133,7 +133,7 @@ const newEmployee = () => {
           }
         ]).then ((data) => {
           let employee = new Manager(data.name, data.id, data.email, data.LinkedIn);
-          // team.push(employee);
+          team.push(employee);
           addMoreEmployees();
         })
         break;

@@ -22,11 +22,12 @@ test('employee has a name as a string', () => {
 
 test('employee has a position as a string', () => {
   const employee = new Employee( 3, 'Jim', 'manager', 'jim@dundermifflin.com');
-  expect().toBe()
+  expect(typeof employee.position).toBe('string')
 });
 
 test('employee has a email as a string', () => {
-
+  const employee = new Employee( 4, 'Darrell', 'manager', 'darrell@dundermifflin.com');
+  expect(typeof employee.email).toBe('string')
 });
 
 

@@ -1,11 +1,12 @@
 // import employee class and subclass
-const {Employee} = require('../lib/Employee');
-const {Intern} = require('../lib/Intern');
-const {Manager} = require('../lib/Manager');
-const {Engineer} = require('../lib/Engineer');
+
+// const {Employee} = require('./src/Employee');
+// const {Intern} = require('.../src/Intern');
+// const {Manager} = require('.../lib/Manager');
+// const {Engineer} = require('.../lib/Engineer');
 // function to render employee case by case
 
-// function to generate html
+
 
 function renderEmployee(employee) {
   switch (employee.getRole()) {
@@ -60,3 +61,30 @@ function renderEmployee(employee) {
     </div>`
   }
 }
+// function to generate html
+function generateHTML(employees) {
+  return `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1>
+  <link rel = "stylesheet" href = "../distribution/style.css">
+  <title>Getting Hammered in the employee genny</title>
+  </head>
+  <body>
+  <header>
+    <h1>Welcome to Team Hammer</h1>
+    <p>Here we make getting hammered fun</p>
+  </header>
+  <main>
+    <div class="card">
+    
+      ${employees.map(employee => renderEmployee(employee)).join("")}
+
+    </div>
+  </main>
+  
+  </body>`
+}
+
+// module.exports = generateHTML;
