@@ -52,7 +52,7 @@ const generalQuestions = [
   }
 ];
 
-// questions created now build prompt to ask user what kind of employee they want to add and questtions to create team member
+// questions created now build prompt to ask user what kind of employee they want to add and questions to create team member
 const newEmployee = () => {
   console.log(`
   -----------------------------------------------------------------

@@ -21,7 +21,11 @@ class Employee {
   }
   getEmail() {
     return this.email;
-  };
+  }
+  getRole() {
+    return this.employee
+  }
+
 
 };
  

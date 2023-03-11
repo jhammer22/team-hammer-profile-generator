@@ -36,7 +36,7 @@ function renderEmployee(employee) {
         <h2>Engineer</h2>
       </div>
       <ul class = "list-group">
-        <li class = "list-group-item">Name: ${enineer.getName()}</li>
+        <li class = "list-group-item">Name: ${engineer.getName()}</li>
         <li class = "list-group-item">ID: ${engineer.getId()}</li>
         <li class = "list-group-item">Email: ${engineer.getEmail()}</li>
         <li class = "list-group-item">Github: ${engineer.getGithub()}</li>
