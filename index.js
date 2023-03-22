@@ -6,7 +6,7 @@ const Intern = require('./library/Intern');
 const Manager = require('./library/Manager');
 const fs = require('fs');
 const generateHTML = require('./src/page');
-const path = require('path');
+const path = require('./distribution/index.html');
 
 const entireTeam = [];
 // all employee types share general questions create reusable arrays of general questions

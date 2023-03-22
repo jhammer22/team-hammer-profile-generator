@@ -3,17 +3,22 @@
 ## User Story
 
 ```md
-This week our task was to build a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. 
+This week our task was to build a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person.
 ```
 
 ## Table of Contents
 
-[Acceptance-Criteria] (#Acceptance-Criteria)
-[Wire-Frame] (#Wire-Frame)
-[Installation-and-Usage] (#Installation-and-Usage)
-[Submission-Video-Link] (#Submission-Video-Link)
-[License] (#License)
-[Languages-and-Tools] (#Languages-and-Tools)
+[Acceptance-Criteria](##Acceptance-Criteria)
+
+[Wire-Frame](##Wire-Frame)
+
+[Installation-and-Usage](##Installation-and-Usage)
+
+[Submission-Video-Link](##Submission-Video-Link)
+
+[License](##License)
+
+[Languages-and-Tools](##Languages-and-Tools)
 
 ## Acceptance Criteria
 
@@ -59,9 +64,19 @@ THEN I exit the application, and the HTML is generated
 
 # Installation and Usage
 
+  To run this application you need to run this:
+
+```
+npm i
+
+node index.js
+
+npm run test
+```
 
 ## Submission Video
 
+https://www.loom.com/share/b9927d6125c14b07b36646b49a85a6fd
 
 ## License 
 
